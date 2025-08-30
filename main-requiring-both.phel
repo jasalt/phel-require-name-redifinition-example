@@ -9,8 +9,3 @@
 (println (module-two/get "https://www.example.com/"))
 ## phel repl:  Error: Cannot use object of type Phel\Lang\Keyword as array
 ## phel run:  {:body  :status 200 :headers {}}
-
-
-#### Phel 0.20.0 repl  (this is the separate issue that was fixed)
-## Cannot resolve symbol 'module-one/get-body'
-## Cannot resolve symbol 'module-two/get'
