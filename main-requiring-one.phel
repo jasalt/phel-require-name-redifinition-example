@@ -2,5 +2,8 @@
   (:require module-one))
 
 (println (module-one/get-body "https://www.example.com/"))
-;; phel repl:  Error: Cannot use object of type Phel\Lang\Keyword as array
-;; phel run:  no output
+## phel repl:  Error: Cannot use object of type Phel\Lang\Keyword as array
+## phel run:  no output
+
+#### Phel 0.20.0
+## phel repl:  Cannot resolve symbol 'module-one/get-body'

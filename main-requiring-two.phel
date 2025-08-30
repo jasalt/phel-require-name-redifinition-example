@@ -2,5 +2,8 @@
   (:require module-two))
 
 (println (module-two/get "https://www.example.com/"))
-;; phel repl:  {:body  :status 200 :headers {}}
-;; phel run:  {:body  :status 200 :headers {}}
+## phel repl:  {:body  :status 200 :headers {}}
+## phel run:  {:body  :status 200 :headers {}}
+
+#### Phel 0.20.0
+## phel repl:  Cannot resolve symbol 'module-two/get'
