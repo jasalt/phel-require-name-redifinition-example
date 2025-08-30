@@ -10,7 +10,7 @@
     (throw (php/new \InvalidArgumentException "Unsupported method")))
 
   ;; `phel repl` errors at (get opts :method):  Error: Cannot use object of type Phel\Lang\Keyword as array
-  ;; `phel run` proceeds as if it called the core `get` function
+  ;; `phel run` proceeds, not throwing exception but does not return anything
 
   {:body "" :status 200 :headers {}})
 

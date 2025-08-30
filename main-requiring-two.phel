@@ -1,0 +1,6 @@
+(ns main-requiring-two
+  (:require module-two))
+
+(println (module-two/get "https://www.example.com/"))
+;; phel repl:  {:body  :status 200 :headers {}}
+;; phel run:  {:body  :status 200 :headers {}}

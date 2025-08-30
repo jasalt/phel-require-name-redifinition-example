@@ -1,0 +1,12 @@
+(ns main-requiring-both
+  (:require module-one)
+  (:require module-two))
+
+
+(println (module-one/get-body "https://www.example.com/"))
+;; phel repl:  Error: Cannot use object of type Phel\Lang\Keyword as array
+;; phel run:  no output
+
+(println (module-two/get "https://www.example.com/"))
+;; phel repl:  Error: Cannot use object of type Phel\Lang\Keyword as array
+;; phel run:  {:body  :status 200 :headers {}}
