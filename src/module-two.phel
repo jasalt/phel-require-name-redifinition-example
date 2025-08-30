@@ -4,7 +4,7 @@
   [url opts]
 
   (when-not (contains-value? ["POST" "GET"]
-                             (get opts :method))  # <- Mistakenly calling get expecting core fn instead of re-defined
+                             (get opts :method))  # <- Mistakenly calling get expecting to use core `get` function instead of re-defined
     (throw (php/new \InvalidArgumentException "Unsupported method")))
 
   {:body "" :status 200 :headers {}})
