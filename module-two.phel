@@ -3,42 +3,25 @@
 ;; Re-defined symbols resolve differently between repl and `phel run`
 
 (defn request
-  "Make an HTTP request with the given URL and options.
-  Options can include:
-  - :method - HTTP method (GET, POST, etc.)
-  - :headers - a map of headers to include in the request
-  - :body - the request body (for POST, PUT, etc.)"
-  [url {:keys [method headers body timeout] :as opts}]
-
-
-  (println (str "type:"(type opts)))
-  (println (str "keys:"(keys opts)))
-
-  (println (contains? opts :method))
+  [url {:keys [method headers body] :as opts}]
 
   (contains-value? ["POST" "GET"] (phel\core/get opts :method))
 
-  ## This calls THIS ns get (but not on phel run??)
-  (contains-value? ["POST" "GET"] (get opts :method))
+  ;; This calls THIS ns get (but not on phel run??)
+
+  (when-not (contains-value? ["POST" "GET"] (get opts :method))
+    (throw (php/new \InvalidArgumentException "Unsupported method")))
+
   ;; In REPL: (get opts :method) =>  Error: Cannot use object of type Phel\Lang\Keyword as array
 
-
-  (throw (php/new \RuntimeException "Test OK!"))
-  (println method url)
-  (println "opts:" opts)
   {:body "" :status 200 :headers {}}
   )
 
 (defn get
-  "Does GET request with optional extra headers."
+  "Wraps request function, adding :method GET to opts."
   [url & [opts]]
   (let [opts (or opts {})]
     (request url (put opts :method "GET"))))
-
-;; (defn is-200? [r]
-;;   (= 200 (get r :status)))
-;; (println (is-200? "test" {}))
-
 
 
 # (phel\core/get opts :method)
