@@ -5,23 +5,18 @@
 (defn request
   [url {:keys [method headers body] :as opts}]
 
-  (contains-value? ["POST" "GET"] (phel\core/get opts :method))
-
-  ;; This calls THIS ns get (but not on phel run??)
-
-  (when-not (contains-value? ["POST" "GET"] (get opts :method))
+  (when-not (contains-value? ["POST" "GET"]
+                             (get opts :method))  ;; <- Mistakenly calling get expecting core fn instead of re-defined
     (throw (php/new \InvalidArgumentException "Unsupported method")))
 
-  ;; In REPL: (get opts :method) =>  Error: Cannot use object of type Phel\Lang\Keyword as array
+  ;; `phel repl` errors at (get opts :method):  Error: Cannot use object of type Phel\Lang\Keyword as array
+  ;; `phel run` proceeds as if it called the core `get` function
 
-  {:body "" :status 200 :headers {}}
-  )
+  {:body "" :status 200 :headers {}})
 
 (defn get
-  "Wraps request function, adding :method GET to opts."
+  "Wraps request function, adding :method GET to opts.
+  WARN: Re-defines core `get` function for this namespace."
   [url & [opts]]
   (let [opts (or opts {})]
     (request url (put opts :method "GET"))))
-
-
-# (phel\core/get opts :method)
