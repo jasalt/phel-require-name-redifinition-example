@@ -2,4 +2,4 @@
   (:require module-two))
 
 (defn get-body [url]
-  (:body (module-two/get "https://example.com")))
+  (:body (module-two/request-get "https://example.com")))

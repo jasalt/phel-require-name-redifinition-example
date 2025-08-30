@@ -1,17 +1,19 @@
 (ns module-two)
 
-(defn request
-  [url opts]
+(declare request)
 
-  (when-not (contains-value? ["POST" "GET"]
-                             (get opts :method))  # <- Mistakenly calling get expecting to use core `get` function instead of re-defined
-    (throw (php/new \InvalidArgumentException "Unsupported method")))
-
-  {:body "" :status 200 :headers {}})
-
-(defn get
+(defn request-get
   "Wraps request function, adding :method GET to opts.
   WARN: Re-defines core `get` function for this namespace."
   [url & [opts]]
   (let [opts (or opts {})]
     (request url (put opts :method "GET"))))
+
+(defn request
+  [url opts]
+
+  (when-not (contains-value? ["POST" "GET"]
+                             (request-get opts :method))  # <- Mistakenly calling request-get instead of core `get`
+    (throw (php/new \InvalidArgumentException "Unsupported method")))
+
+  {:body "" :status 200 :headers {}})

@@ -1,10 +1,6 @@
 (ns main-requiring-two
   (:require module-two))
 
-(println (module-two/get "https://www.example.com/"))
-## phel repl:  {:body  :status 200 :headers {}}
-## phel run:  {:body  :status 200 :headers {}}
-
-#### Phel 0.20.0
-## phel repl:  Cannot resolve symbol 'module-two/get'  (maybe related to fixed https://github.com/phel-lang/phel-lang/issues/920)
-## phel run: {:body  :status 200 :headers {}}
+(println (module-two/request-get "https://www.example.com/"))
+## phel repl:  Error: Cannot use object of type Phel\Lang\Keyword as array
+## phel run:  Cannot use object of type Phel\Lang\Keyword as array

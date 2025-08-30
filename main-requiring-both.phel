@@ -3,9 +3,9 @@
   (:require module-two))
 
 (println (module-one/get-body "https://www.example.com/"))
-## phel repl:  Error: Cannot use object of type Phel\Lang\Keyword as array
-## phel run:  no output
+## phel repl: Error: Cannot use object of type Phel\Lang\Keyword as array
+## phel run:  Cannot use object of type Phel\Lang\Keyword as array
 
-(println (module-two/get "https://www.example.com/"))
+(println (module-two/request-get "https://www.example.com/"))
 ## phel repl:  Error: Cannot use object of type Phel\Lang\Keyword as array
-## phel run:  {:body  :status 200 :headers {}}
+## phel run:  Cannot use object of type Phel\Lang\Keyword as array
