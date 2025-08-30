@@ -3,7 +3,7 @@
 ;; Re-defined symbols resolve differently between repl and `phel run`
 
 (defn request
-  [url {:keys [method headers body] :as opts}]
+  [url opts]
 
   (when-not (contains-value? ["POST" "GET"]
                              (get opts :method))  ;; <- Mistakenly calling get expecting core fn instead of re-defined
