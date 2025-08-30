@@ -1,4 +1,12 @@
 (ns main
-  (:require module-one))
+  (:require module-one)   ;; *
+  (:require module-two))
 
-(module-one/get-body "https://www.example.com/")
+(module-two/get "https://www.example.com/")
+;; Repl:  Error: Cannot use object of type Phel\Lang\Keyword as array
+
+(module-one/get-body "https://www.example.com/")    ;; *
+;; Repl:  Error: Cannot use object of type Phel\Lang\Keyword as array
+
+
+;; * If these are commented out, repl does not error. Thus, calling module-two/get from main works IF module-one is not required.
