@@ -1,5 +1,5 @@
 {
     "require": {
-        "phel-lang/phel-lang": "dev-main"
+	  "phel-lang/phel-lang": "dev-main#890bae0845c924d470a9835953c6dab3b9cf9348"
     }
 }
